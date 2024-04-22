@@ -6,6 +6,7 @@ import requests
 
 app = flask.Flask(__name__)
 app.config["SECRET_KEY"] = "seasdad(*2sffcra01^23sdet"
+app.static_url_path = '/static'
 
 CORS(app)
 
@@ -17,6 +18,10 @@ api_url = "https://gkilpatrick-api.azurewebsites.net/" # base url for API endpoi
 def index():
     return render_template("index.html")
 
+# Route to about page
+@app.route('/about')
+def about():
+    return render_template("about.html")
 
 @app.route("/predict", methods=["GET", "POST"])
 def predict():
